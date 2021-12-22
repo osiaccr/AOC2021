@@ -7,14 +7,14 @@ let bind (x : 'a option) (op : 'a -> 'b option) : 'b option =
 
 let ( >>= ) = bind
 
-let deopt lst = 
+let deopt lst =
   List.filter_map ~f:(fun x -> x) lst
 
 let read_file file = In_channel.read_lines file
 
-let moves =  
+let moves =
   let lines = read_file "day2.txt" in
-  let optl = List.map lines ~f:(fun l -> let ws = Str.bounded_split (Str.regexp " ") l 2 in 
+  let optl = List.map lines ~f:(fun l -> let ws = Str.bounded_split (Str.regexp " ") l 2 in
     List.nth ws 0 >>= fun f ->
     List.nth ws 1 >>= fun s ->
       Some (f, int_of_string s)) in
@@ -29,7 +29,7 @@ let movepos ((x, y): int * int) ((mv, pw): string * int) = match mv with
 | _ -> (x, y) ;;
 
 
-let res = 
+let res =
   let start = (0, 0) in
   let (x, y) = List.fold_left moves ~init:(start) ~f:(movepos) in
   x * y
@@ -42,7 +42,7 @@ let aimmoveops ((x, y, z): int * int * int) ((mv, pw): string * int) = match mv 
 | "up" -> (x, y, z - pw)
 | _ -> (x, y, z)
 
-let res2 = 
+let res2 =
   let start = (0, 0, 0) in
   let (x, y, _) = List.fold_left moves ~init:(start) ~f:(aimmoveops) in
   x * y
