@@ -1,1 +1,1 @@
-__version__: str = "0.1.dev8+g4cda53a.d20211227"
+__version__: str = "0.1.dev9+g6ee2f2d.d20211228"

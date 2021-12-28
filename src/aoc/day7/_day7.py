@@ -1,7 +1,5 @@
 from __future__ import annotations
 
-from collections import Counter
-from decimal import InvalidOperation
 from statistics import mean, median_high
 
 
