@@ -29,12 +29,12 @@ def _complete_score(line: list[str]) -> int:
 
 def solve(input_text: str) -> tuple[int, int]:
 
-    autocomplete = [_autocomplete(l) for l in input_text.splitlines()]
+    autocomplete = [_autocomplete(line) for line in input_text.splitlines()]
 
     error_value = {")": 3, "]": 57, "}": 1197, ">": 25137}
 
     syntax_error_score = reduce(add, [error_value[t[1]] for t in autocomplete if isinstance(t, tuple)])
 
-    complete_score = median_high(_complete_score(l) for l in autocomplete if isinstance(l, list))
+    complete_score = median_high(_complete_score(line) for line in autocomplete if isinstance(line, list))
 
     return (syntax_error_score, complete_score)
