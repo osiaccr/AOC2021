@@ -6,12 +6,12 @@ from itertools import chain
 def _find_uniques(input_text: str) -> int:
     display_outputs = list(chain(*map(lambda s: s.split("|")[1].split(), input_text.splitlines())))
 
-    return sum([len(s) in [2, 3, 4, 7] for s in display_outputs])
+    return sum(len(s) in [2, 3, 4, 7] for s in display_outputs)
 
 
 def _parse(input_text: str) -> list[tuple[list[set[str]], list[set[str]]]]:
-    def _line_mapper(l: str) -> tuple[list[set[str]], list[set[str]]]:
-        signals, output = l.split("|")
+    def _line_mapper(line: str) -> tuple[list[set[str]], list[set[str]]]:
+        signals, output = line.split("|")
 
         return list(map(frozenset, signals.split())), list(map(frozenset, output.split()))  # type: ignore
 
