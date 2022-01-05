@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 from itertools import chain
-from operator import or_
 from typing import TypeVar
 
 T = TypeVar("T")
