@@ -3,13 +3,13 @@ from __future__ import annotations
 from abc import ABCMeta, abstractmethod
 from dataclasses import dataclass
 from math import prod
-from typing import Any, Callable, Iterable, Type, TypeVar
+from typing import Any, Callable, Iterable, TypeVar
 
 
 # Mypy does not fully support a Comparable abstract type, this is a workaround, but not great
 class Comparable(metaclass=ABCMeta):
     @abstractmethod
-    def __lt__(self, other: Any) -> bool:
+    def __lt__(self, _: Any) -> bool:
         ...
 
 
